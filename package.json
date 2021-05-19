@@ -1,0 +1,14 @@
+{
+  "name": "google-covid-19-mobility-report-exploration",
+  "version": "1.0.0",
+  "description": "A project seeking to explore and visualise the Google Covid-19 Mobility Report data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "creditdesign@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "d3-dsv": "^2.0.0"
+  }
+}

@@ -1,0 +1,6 @@
+.DS_Store
+.ipynb_checkpoints
+secrets/
+source-data/
+output-data/
+node_modules/
