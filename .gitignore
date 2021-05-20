@@ -4,3 +4,6 @@ secrets/
 source-data/
 output-data/
 node_modules/
+public/build/
+public/index.html
+ssr/
