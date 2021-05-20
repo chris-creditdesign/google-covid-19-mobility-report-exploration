@@ -1,7 +1,10 @@
+import * as PIXI from "pixi.js";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PixiPlugin } from "gsap/PixiPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, PixiPlugin);
+PixiPlugin.registerPIXI(PIXI);
 
 const getScaleAndPivot = (path, geoJsonArea, width, height) => {
   const [[x0, y0], [x1, y1]] = path.bounds(geoJsonArea);
@@ -19,8 +22,6 @@ function buildAnimation() {
   let { props, landAreas, landPath } = this;
   let { europe, usa } = landAreas;
   let { width, height } = props;
-  let ease = "none";
-  let duration = 1;
 
   const europeZoom = getScaleAndPivot(landPath, europe, width, height);
   const usaZoom = getScaleAndPivot(landPath, usa, width, height);
@@ -34,49 +35,117 @@ function buildAnimation() {
     this.app.ticker.update();
   });
 
-  // Create a timeline instance
-  this.masterTimeline = gsap.timeline({
+  const usaEnd = gsap.timeline({
     scrollTrigger: {
-      trigger: document.body,
+      trigger: "#usa-end",
+      start: "top center",
       scrub: true,
-      start: "top top",
-      end: "bottom bottom",
-      defaults: { duration, ease },
     },
   });
 
-  this.masterTimeline
-    .to(
-      this.landGraphics.scale,
-      { x: europeZoom.scale, y: europeZoom.scale },
-      0
-    )
-    .to(
-      this.landGraphics.pivot,
-      {
-        x: europeZoom.pivotX,
-        y: europeZoom.pivotY,
+  usaEnd.fromTo(
+    this.landGraphics,
+    {
+      pixi: {
+        scaleX: usaZoom.scale,
+        scaleY: usaZoom.scale,
+        pivotX: usaZoom.pivotX,
+        pivotY: usaZoom.pivotY,
       },
-      0
-    )
-    .to(this.landGraphics.scale, { x: usaZoom.scale, y: usaZoom.scale }, 1)
-    .to(
-      this.landGraphics.pivot,
-      {
-        x: usaZoom.pivotX,
-        y: usaZoom.pivotY,
+    },
+    {
+      pixi: {
+        scaleX: 1,
+        scaleY: 1,
+        pivotX: width / 2,
+        pivotY: height / 2,
       },
-      1
-    )
-    .to(this.landGraphics.scale, { x: 1, y: 1 }, 2)
-    .to(
-      this.landGraphics.pivot,
-      {
-        x: width / 2,
-        y: height / 2,
+    }
+  );
+
+  const usaStart = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#usa-start",
+      start: "top center",
+      scrub: true,
+    },
+  });
+
+  usaStart.fromTo(
+    this.landGraphics,
+    {
+      pixi: {
+        scaleX: 1,
+        scaleY: 1,
+        pivotX: width / 2,
+        pivotY: height / 2,
       },
-      2
-    );
+    },
+    {
+      pixi: {
+        scaleX: usaZoom.scale,
+        scaleY: usaZoom.scale,
+        pivotX: usaZoom.pivotX,
+        pivotY: usaZoom.pivotY,
+      },
+    }
+  );
+
+  const europeEnd = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#europe-end",
+      start: "top center",
+      scrub: true,
+    },
+  });
+
+  europeEnd.fromTo(
+    this.landGraphics,
+    {
+      pixi: {
+        scaleX: europeZoom.scale,
+        scaleY: europeZoom.scale,
+        pivotX: europeZoom.pivotX,
+        pivotY: europeZoom.pivotY,
+      },
+    },
+    {
+      pixi: {
+        scaleX: 1,
+        scaleY: 1,
+        pivotX: width / 2,
+        pivotY: height / 2,
+      },
+    }
+  );
+
+  const europeStart = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#europe-start",
+      start: "top center",
+      scrub: true,
+    },
+  });
+
+  europeStart.fromTo(
+    this.landGraphics,
+    {
+      pixi: {
+        scaleX: 1,
+        scaleY: 1,
+        pivotX: width / 2,
+        pivotY: height / 2,
+      },
+    },
+    {
+      pixi: {
+        scaleX: europeZoom.scale,
+        scaleY: europeZoom.scale,
+        pivotX: europeZoom.pivotX,
+        pivotY: europeZoom.pivotY,
+      },
+    }
+  );
 
   return this;
 }

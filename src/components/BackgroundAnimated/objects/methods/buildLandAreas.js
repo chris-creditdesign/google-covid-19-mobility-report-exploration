@@ -1,5 +1,4 @@
 import * as topojson from "topojson-client";
-// import world from "../../../../data/land-50m.json";
 
 let europe = {
   type: "FeatureCollection",
