@@ -1,37 +1,33 @@
-// import * as dat from "dat.gui";
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-import buildProps from "../functions/build-props.js";
-import Map from "../objects/Map";
+import buildProps from "../functions/buildProps.js";
+import buildLandAreas from "../functions/buildLandAreas";
+import buildData from "../functions/buildData.js";
+import Map from "../map/Map.js";
 
 export const backgroundAnimation = async (node, scrollPosition) => {
   let width = window.innerWidth;
   let height = window.innerHeight;
   let resolution = window.devicePixelRatio;
 
-  // 1. Set up the props based on the height of the screen.
+  // 1. Set up the props based on the height of the screen
+  // and await while we load the data.
   let props = buildProps({
     width,
     height,
     resolution,
   });
+  const landAreas = await buildLandAreas();
+  const data = await buildData();
 
   // 5. Build a pixi application
-  const createMap = async () =>
-    Map({ ...props })
-      .buildApp()
-      .buildLandAreas();
-
-  // Await while we load the data
-  let myMap = await createMap();
+  let myMap = Map({ ...props, data, landAreas });
 
   myMap
+    .buildApp()
     .buildProjections()
     .buildLandGraphics()
+    .buildDataGraphics()
     .drawLandGraphics()
+    .drawDataGraphics()
     .buildAnimation();
 
   // 6. Render the app to the screen

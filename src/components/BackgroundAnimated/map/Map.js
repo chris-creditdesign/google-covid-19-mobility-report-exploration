@@ -2,8 +2,9 @@ import buildApp from "./methods/buildApp.js";
 import buildLandGraphics from "./methods/buildLandGraphics.js";
 import drawLandGraphics from "./methods/drawLandGraphics.js";
 import buildProjections from "./methods/buildProjections.js";
-import buildLandAreas from "./methods/buildLandAreas.js";
 import buildAnimation from "./methods/buildAnimation.js";
+import buildDataGraphics from "./methods/buildDataGraphics.js";
+import drawDataGraphics from "./methods/drawDataGraphics.js";
 
 const Map = (props) => ({
   props,
@@ -11,8 +12,9 @@ const Map = (props) => ({
   buildLandGraphics,
   drawLandGraphics,
   buildProjections,
-  buildLandAreas,
   buildAnimation,
+  buildDataGraphics,
+  drawDataGraphics,
 });
 
 export default Map;

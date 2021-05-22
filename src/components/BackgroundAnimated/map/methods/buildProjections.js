@@ -1,9 +1,9 @@
 import { geoEquirectangular, geoPath } from "d3-geo";
 
 function buildProjections() {
-  let { props, landAreas } = this;
+  let { props } = this;
+  let { width, height, landAreas } = props;
   let { world } = landAreas;
-  let { width, height } = props;
 
   this.projection = geoEquirectangular().fitExtent(
     [

@@ -1,5 +1,6 @@
 function drawLandGraphics() {
-  let { landGraphics, landPath, landAreas } = this;
+  let { landGraphics, landPath, props } = this;
+  let { landAreas } = props;
   let { world } = landAreas;
 
   landGraphics.clear();

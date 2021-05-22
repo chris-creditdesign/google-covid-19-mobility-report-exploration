@@ -53,13 +53,13 @@ async function buildLandAreas() {
 
   const world = await response.json();
 
-  this.landAreas = {};
+  const landAreas = {};
 
-  this.landAreas.world = topojson.feature(world, world.objects.land);
-  this.landAreas.usa = usa;
-  this.landAreas.europe = europe;
+  landAreas.world = topojson.feature(world, world.objects.land);
+  landAreas.usa = usa;
+  landAreas.europe = europe;
 
-  return this;
+  return landAreas;
 }
 
 export default buildLandAreas;
