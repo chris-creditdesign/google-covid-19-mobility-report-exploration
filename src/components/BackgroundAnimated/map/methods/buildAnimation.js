@@ -19,7 +19,7 @@ const getScaleAndPivot = (path, geoJsonArea, width, height) => {
 };
 
 function buildAnimation() {
-  let { app, props, landPath } = this;
+  let { app, landPath, graphicsContainer, props } = this;
   let { width, height, landAreas } = props;
   let { europe, usa } = landAreas;
 
@@ -86,59 +86,59 @@ function buildAnimation() {
     this.drawDataGraphics();
   });
 
-  //   const usaEnd = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: "#usa-end",
-  //       start: "top center",
-  //       scrub: true,
-  //     },
-  //   });
+  const usaEnd = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#usa-end",
+      start: "top center",
+      scrub: true,
+    },
+  });
 
-  //   usaEnd.fromTo(
-  //     this.landGraphics,
-  //     {
-  //       pixi: zoomInUsa,
-  //     },
-  //     {
-  //       pixi: zoomOutWorld,
-  //     }
-  //   );
+  usaEnd.fromTo(
+    graphicsContainer,
+    {
+      pixi: zoomInUsa,
+    },
+    {
+      pixi: zoomOutWorld,
+    }
+  );
 
-  //   const usaStart = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: "#usa-start",
-  //       start: "top center",
-  //       scrub: true,
-  //     },
-  //   });
+  const usaStart = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#usa-start",
+      start: "top center",
+      scrub: true,
+    },
+  });
 
-  //   usaStart.fromTo(
-  //     this.landGraphics,
-  //     {
-  //       pixi: zoomInEurope,
-  //     },
-  //     {
-  //       pixi: zoomInUsa,
-  //     }
-  //   );
+  usaStart.fromTo(
+    graphicsContainer,
+    {
+      pixi: zoomInEurope,
+    },
+    {
+      pixi: zoomInUsa,
+    }
+  );
 
-  //   const europeStart = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: "#europe-start",
-  //       start: "top center",
-  //       scrub: true,
-  //     },
-  //   });
+  const europeStart = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#europe-start",
+      start: "top center",
+      scrub: true,
+    },
+  });
 
-  //   europeStart.fromTo(
-  //     this.landGraphics,
-  //     {
-  //       pixi: zoomOutWorld,
-  //     },
-  //     {
-  //       pixi: zoomInEurope,
-  //     }
-  //   );
+  europeStart.fromTo(
+    graphicsContainer,
+    {
+      pixi: zoomOutWorld,
+    },
+    {
+      pixi: zoomInEurope,
+    }
+  );
 
   return this;
 }

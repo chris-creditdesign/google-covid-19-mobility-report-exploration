@@ -11,6 +11,14 @@ function buildApp() {
     backgroundAlpha: 0.0,
   });
 
+  this.graphicsContainer = new PIXI.Container();
+
+  this.graphicsContainer.x = width / 2;
+  this.graphicsContainer.y = height / 2;
+  this.graphicsContainer.pivot.set(width / 2, height / 2);
+
+  this.app.stage.addChild(this.graphicsContainer);
+
   return this;
 }
 
