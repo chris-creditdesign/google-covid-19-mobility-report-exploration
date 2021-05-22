@@ -11,6 +11,7 @@ const buildProps = (options) => {
   return {
     width,
     height,
+    currentDay: 4,
     ...options,
   };
 };

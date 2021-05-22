@@ -19,9 +19,13 @@ const getScaleAndPivot = (path, geoJsonArea, width, height) => {
 };
 
 function buildAnimation() {
-  let { props, landPath } = this;
+  let { app, props, landPath } = this;
   let { width, height, landAreas } = props;
   let { europe, usa } = landAreas;
+
+  let animationProps = {
+    currentDay: 4,
+  };
 
   /* -------------------------- Set up PIXI and GSAP -------------------------- */
 
@@ -61,6 +65,26 @@ function buildAnimation() {
   };
 
   /* ----------------------------- GSAP timelines ----------------------------- */
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: document.body,
+      scrub: true,
+      start: "top top",
+      end: "bottom bottom",
+      defaults: { duration: 1 },
+    },
+  });
+
+  tl.to(animationProps, { currentDay: 300 });
+
+  // Listen for animate update and redraw the spikes
+  app.ticker.add(() => {
+    const currentDay = parseInt(animationProps.currentDay, 10);
+
+    props.currentDay = currentDay;
+    this.drawDataGraphics();
+  });
 
   //   const usaEnd = gsap.timeline({
   //     scrollTrigger: {
