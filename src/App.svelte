@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { Center, Stack } from "creditdesign-svelte-components";
   import { allowAnimation } from "./stores/prefers-reduced-motion.js";
   import { widthCheckElement } from "./stores/check-wide-enough.js";
   import BackgroundContainer from "./components/BackgroundContainer/index.svelte";
@@ -23,128 +24,151 @@
     height: 100vh;
   }
 
-  p {
-    max-width: 30ch;
-    margin-top: 300px;
+  h1 {
+    margin-top: var(--s6);
+  }
+
+  main {
+    margin-bottom: 100vh;
+  }
+
+  footer {
+    margin-bottom: var(--s3);
   }
 </style>
 
 <!-- <Head articleData="{articleData}" /> -->
 
-<heading>
-  <h1>Hello is this working</h1>
-  <p>Let's make this into a standfirst</p>
-</heading>
+<Stack stackSpace="var(--s6)">
+  <Center>
+    <heading>
+      <Stack>
+        <h1>Hello is this working</h1>
+        <p>Let's make this into a standfirst</p>
+      </Stack>
+    </heading>
+  </Center>
 
-<main bind:this="{$widthCheckElement}" id="main-content">
-  <BackgroundContainer />
+  <main bind:this="{$widthCheckElement}" id="main-content">
+    <BackgroundContainer />
 
-  <div>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
+    <Center>
+      <Stack stackSpace="100vh">
+        <Stack>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+        </Stack>
 
-    <h2 id="europe-start">Europe start</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
+        <Stack>
+          <h2 id="europe-start">Europe start</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
 
-    <h2 id="europe-end">Europe end</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+        </Stack>
 
-    <h2 id="usa-start">United States of the united states of america</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
+        <Stack>
+          <h2 id="usa-start">United States of the united states of america</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+        </Stack>
+        <Stack>
+          <h2 id="usa-end">USA end</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
+            vero dolor delectus debitis ut eaque adipisci necessitatibus,
+            accusantium odit nesciunt? Est, officiis!
+          </p>
+        </Stack>
+      </Stack>
+    </Center>
+  </main>
 
-    <h2 id="usa-end">USA end</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, harum.
-      Odio temporibus expedita, obcaecati quo fugiat voluptatem vero dolor
-      delectus debitis ut eaque adipisci necessitatibus, accusantium odit
-      nesciunt? Est, officiis!
-    </p>
-  </div>
-</main>
-
-<footer>Let's make this a footer.</footer>
+  <Center>
+    <footer>Let's make this a footer.</footer>
+  </Center>
+</Stack>

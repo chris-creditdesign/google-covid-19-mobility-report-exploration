@@ -23,8 +23,7 @@ function buildAnimation() {
   let { europe, usa } = landAreas;
   let { width, height } = props;
 
-  const europeZoom = getScaleAndPivot(landPath, europe, width, height);
-  const usaZoom = getScaleAndPivot(landPath, usa, width, height);
+  /* -------------------------- Set up PIXI and GSAP -------------------------- */
 
   // We stop Pixi ticker using stop() function because autoStart = false does NOT stop the shared ticker:
   // doc: http://pixijs.download/release/docs/PIXI.Application.html
@@ -34,6 +33,34 @@ function buildAnimation() {
   gsap.ticker.add(() => {
     this.app.ticker.update();
   });
+
+  /* --------------------------- Zoom levels --------------------------- */
+
+  const europeZoom = getScaleAndPivot(landPath, europe, width, height);
+  const usaZoom = getScaleAndPivot(landPath, usa, width, height);
+
+  const zoomOutWorld = {
+    scaleX: 1,
+    scaleY: 1,
+    pivotX: width / 2,
+    pivotY: height / 2,
+  };
+
+  const zoomInUsa = {
+    scaleX: usaZoom.scale,
+    scaleY: usaZoom.scale,
+    pivotX: usaZoom.pivotX,
+    pivotY: usaZoom.pivotY,
+  };
+
+  const zoomInEurope = {
+    scaleX: europeZoom.scale,
+    scaleY: europeZoom.scale,
+    pivotX: europeZoom.pivotX,
+    pivotY: europeZoom.pivotY,
+  };
+
+  /* ----------------------------- GSAP timelines ----------------------------- */
 
   const usaEnd = gsap.timeline({
     scrollTrigger: {
@@ -46,20 +73,10 @@ function buildAnimation() {
   usaEnd.fromTo(
     this.landGraphics,
     {
-      pixi: {
-        scaleX: usaZoom.scale,
-        scaleY: usaZoom.scale,
-        pivotX: usaZoom.pivotX,
-        pivotY: usaZoom.pivotY,
-      },
+      pixi: zoomInUsa,
     },
     {
-      pixi: {
-        scaleX: 1,
-        scaleY: 1,
-        pivotX: width / 2,
-        pivotY: height / 2,
-      },
+      pixi: zoomOutWorld,
     }
   );
 
@@ -74,48 +91,10 @@ function buildAnimation() {
   usaStart.fromTo(
     this.landGraphics,
     {
-      pixi: {
-        scaleX: 1,
-        scaleY: 1,
-        pivotX: width / 2,
-        pivotY: height / 2,
-      },
+      pixi: zoomInEurope,
     },
     {
-      pixi: {
-        scaleX: usaZoom.scale,
-        scaleY: usaZoom.scale,
-        pivotX: usaZoom.pivotX,
-        pivotY: usaZoom.pivotY,
-      },
-    }
-  );
-
-  const europeEnd = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#europe-end",
-      start: "top center",
-      scrub: true,
-    },
-  });
-
-  europeEnd.fromTo(
-    this.landGraphics,
-    {
-      pixi: {
-        scaleX: europeZoom.scale,
-        scaleY: europeZoom.scale,
-        pivotX: europeZoom.pivotX,
-        pivotY: europeZoom.pivotY,
-      },
-    },
-    {
-      pixi: {
-        scaleX: 1,
-        scaleY: 1,
-        pivotX: width / 2,
-        pivotY: height / 2,
-      },
+      pixi: zoomInUsa,
     }
   );
 
@@ -130,20 +109,10 @@ function buildAnimation() {
   europeStart.fromTo(
     this.landGraphics,
     {
-      pixi: {
-        scaleX: 1,
-        scaleY: 1,
-        pivotX: width / 2,
-        pivotY: height / 2,
-      },
+      pixi: zoomOutWorld,
     },
     {
-      pixi: {
-        scaleX: europeZoom.scale,
-        scaleY: europeZoom.scale,
-        pivotX: europeZoom.pivotX,
-        pivotY: europeZoom.pivotY,
-      },
+      pixi: zoomInEurope,
     }
   );
 
