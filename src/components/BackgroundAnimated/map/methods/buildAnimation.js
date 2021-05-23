@@ -6,22 +6,9 @@ import { PixiPlugin } from "gsap/PixiPlugin";
 gsap.registerPlugin(ScrollTrigger, PixiPlugin);
 PixiPlugin.registerPIXI(PIXI);
 
-const getScaleAndPivot = (path, geoJsonArea, width, height) => {
-  const [[x0, y0], [x1, y1]] = path.bounds(geoJsonArea);
-  const scale = Math.min(
-    8,
-    0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)
-  );
-  const pivotX = (x0 + x1) / 2;
-  const pivotY = (y0 + y1) / 2;
-
-  return { scale, pivotX, pivotY };
-};
-
 function buildAnimation() {
-  let { app, landPath, graphicsContainer, props } = this;
-  let { width, height, landAreas } = props;
-  let { europe, usa } = landAreas;
+  let { app, graphicsContainer, props } = this;
+  let { zoom } = props;
 
   let animationProps = {
     currentDay: 4,
@@ -37,32 +24,6 @@ function buildAnimation() {
   gsap.ticker.add(() => {
     this.app.ticker.update();
   });
-
-  /* --------------------------- Zoom levels --------------------------- */
-
-  const europeZoom = getScaleAndPivot(landPath, europe, width, height);
-  const usaZoom = getScaleAndPivot(landPath, usa, width, height);
-
-  const zoomOutWorld = {
-    scaleX: 1,
-    scaleY: 1,
-    pivotX: width / 2,
-    pivotY: height / 2,
-  };
-
-  const zoomInUsa = {
-    scaleX: usaZoom.scale,
-    scaleY: usaZoom.scale,
-    pivotX: usaZoom.pivotX,
-    pivotY: usaZoom.pivotY,
-  };
-
-  const zoomInEurope = {
-    scaleX: europeZoom.scale,
-    scaleY: europeZoom.scale,
-    pivotX: europeZoom.pivotX,
-    pivotY: europeZoom.pivotY,
-  };
 
   /* ----------------------------- GSAP timelines ----------------------------- */
 
@@ -83,7 +44,7 @@ function buildAnimation() {
   });
 
   gsap.to(graphicsContainer, {
-    pixi: zoomInEurope,
+    pixi: zoom.europe,
     ease: "power1.inOut",
     scrollTrigger: {
       trigger: "#europe-start",
@@ -95,10 +56,10 @@ function buildAnimation() {
   gsap.fromTo(
     graphicsContainer,
     {
-      pixi: zoomInEurope,
+      pixi: zoom.europe,
     },
     {
-      pixi: zoomInUsa,
+      pixi: zoom.usa,
       ease: "power1.inOut",
       immediateRender: false,
       scrollTrigger: {
@@ -112,10 +73,10 @@ function buildAnimation() {
   gsap.fromTo(
     graphicsContainer,
     {
-      pixi: zoomInUsa,
+      pixi: zoom.usa,
     },
     {
-      pixi: zoomOutWorld,
+      pixi: zoom.world,
       ease: "power1.inOut",
       immediateRender: false,
       scrollTrigger: {

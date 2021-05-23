@@ -5,6 +5,7 @@ import buildProjections from "./methods/buildProjections.js";
 import buildAnimation from "./methods/buildAnimation.js";
 import buildDataGraphics from "./methods/buildDataGraphics.js";
 import drawDataGraphics from "./methods/drawDataGraphics.js";
+import buildZoomLevels from "./methods/buildZoomLevels.js";
 
 const Map = (props) => ({
   props,
@@ -15,6 +16,7 @@ const Map = (props) => ({
   buildAnimation,
   buildDataGraphics,
   drawDataGraphics,
+  buildZoomLevels,
 });
 
 export default Map;

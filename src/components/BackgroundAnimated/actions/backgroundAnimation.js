@@ -24,6 +24,7 @@ export const backgroundAnimation = async (node, scrollPosition) => {
   myMap
     .buildApp()
     .buildProjections()
+    .buildZoomLevels()
     .buildLandGraphics()
     .buildDataGraphics()
     .drawLandGraphics()
@@ -35,7 +36,6 @@ export const backgroundAnimation = async (node, scrollPosition) => {
 
   return {
     update(newScrollPosition) {
-      console.log("newScrollPosition");
       return false;
     },
     destroy() {
