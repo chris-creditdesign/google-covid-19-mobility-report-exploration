@@ -66,17 +66,67 @@ function buildAnimation() {
 
   /* ----------------------------- GSAP timelines ----------------------------- */
 
-  const tl = gsap.timeline({
+  // 448 length of dates array
+
+  const scrollSections = gsap.utils.toArray(".scroll-section");
+  scrollSections.forEach((section) => {
+    gsap.to(animationProps, {
+      currentDay: 444,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+  });
+
+  gsap.to(graphicsContainer, {
+    pixi: zoomInEurope,
+    ease: "power1.inOut",
     scrollTrigger: {
-      trigger: document.body,
+      trigger: "#europe-start",
+      start: "top center",
       scrub: true,
-      start: "top top",
-      end: "bottom bottom",
-      defaults: { duration: 1 },
     },
   });
 
-  tl.to(animationProps, { currentDay: 300 });
+  gsap.fromTo(
+    graphicsContainer,
+    {
+      pixi: zoomInEurope,
+    },
+    {
+      pixi: zoomInUsa,
+      ease: "power1.inOut",
+      immediateRender: false,
+      scrollTrigger: {
+        trigger: "#usa-start",
+        start: "top center",
+        scrub: true,
+      },
+    }
+  );
+
+  gsap.fromTo(
+    graphicsContainer,
+    {
+      pixi: zoomInUsa,
+    },
+    {
+      pixi: zoomOutWorld,
+      ease: "power1.inOut",
+      immediateRender: false,
+      scrollTrigger: {
+        trigger: "#final-start",
+        start: "top center",
+        scrub: true,
+      },
+    }
+  );
+
+  /* -------------------------- Update the animation -------------------------- */
 
   // Listen for animate update and redraw the spikes
   app.ticker.add(() => {
@@ -85,60 +135,6 @@ function buildAnimation() {
     props.currentDay = currentDay;
     this.drawDataGraphics();
   });
-
-  const usaEnd = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#usa-end",
-      start: "top center",
-      scrub: true,
-    },
-  });
-
-  usaEnd.fromTo(
-    graphicsContainer,
-    {
-      pixi: zoomInUsa,
-    },
-    {
-      pixi: zoomOutWorld,
-    }
-  );
-
-  const usaStart = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#usa-start",
-      start: "top center",
-      scrub: true,
-    },
-  });
-
-  usaStart.fromTo(
-    graphicsContainer,
-    {
-      pixi: zoomInEurope,
-    },
-    {
-      pixi: zoomInUsa,
-    }
-  );
-
-  const europeStart = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#europe-start",
-      start: "top center",
-      scrub: true,
-    },
-  });
-
-  europeStart.fromTo(
-    graphicsContainer,
-    {
-      pixi: zoomOutWorld,
-    },
-    {
-      pixi: zoomInEurope,
-    }
-  );
 
   return this;
 }
