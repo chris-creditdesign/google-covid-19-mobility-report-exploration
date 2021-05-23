@@ -12,11 +12,11 @@ const getScaleAndPivot = (path, geoJsonArea, width, height) => {
 
 function buildZoomLevels() {
   let { props, landPath } = this;
-  let { width, height, landAreas, zoom } = props;
+  let { width, height, landAreas, zoomLevels } = props;
   let { europe, usa } = landAreas;
 
-  zoom.europe = getScaleAndPivot(landPath, europe, width, height);
-  zoom.usa = getScaleAndPivot(landPath, usa, width, height);
+  zoomLevels.europe = getScaleAndPivot(landPath, europe, width, height);
+  zoomLevels.usa = getScaleAndPivot(landPath, usa, width, height);
 
   return this;
 }

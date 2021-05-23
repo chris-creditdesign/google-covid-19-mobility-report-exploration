@@ -28,10 +28,6 @@
     margin-top: var(--s6);
   }
 
-  main {
-    margin-bottom: 100vh;
-  }
-
   footer {
     margin-bottom: var(--s3);
   }
@@ -58,8 +54,8 @@
     <BackgroundContainer />
 
     <Center>
-      <Stack stackSpace="50vh">
-        <div class="scroll-section">
+      <Stack stackSpace="var(--s5)">
+        <div class="scroll-section" data-zoom="world">
           <Stack>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
@@ -90,7 +86,7 @@
 
         <h2 id="europe-start">Europe start</h2>
 
-        <div class="scroll-section">
+        <div class="scroll-section" data-zoom="europe">
           <Stack>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
@@ -134,7 +130,7 @@
 
         <h2 id="usa-start">United States of the united states of america</h2>
 
-        <div class="scroll-section">
+        <div class="scroll-section" data-zoom="usa">
           <Stack>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
@@ -157,9 +153,9 @@
           </Stack>
         </div>
 
-        <h2 id="final-start">Final section start</h2>
+        <h2 id="end-start">Final section start</h2>
 
-        <div class="scroll-section">
+        <div class="scroll-section" data-zoom="world">
           <Stack>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,

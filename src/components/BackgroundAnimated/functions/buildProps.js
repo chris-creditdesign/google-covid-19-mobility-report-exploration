@@ -5,8 +5,7 @@ options = {
 */
 
 const buildProps = (options) => {
-  let height = Math.floor(Math.min(options.height, options.width) * 1.4);
-  let width = height;
+  let { width, height } = options;
 
   let defaultZoom = {
     scaleX: 1,
@@ -15,17 +14,16 @@ const buildProps = (options) => {
     pivotY: height / 2,
   };
 
-  let zoom = {
+  let zoomLevels = {
     world: defaultZoom,
     usa: defaultZoom,
     europe: defaultZoom,
   };
 
   return {
-    width,
-    height,
     currentDay: 4,
-    zoom,
+    dataDisplay: "none",
+    zoomLevels,
     ...options,
   };
 };

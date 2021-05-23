@@ -8,7 +8,7 @@ PixiPlugin.registerPIXI(PIXI);
 
 function buildAnimation() {
   let { app, graphicsContainer, props } = this;
-  let { zoom } = props;
+  let { zoomLevels } = props;
 
   let animationProps = {
     currentDay: 4,
@@ -28,7 +28,6 @@ function buildAnimation() {
   /* ----------------------------- GSAP timelines ----------------------------- */
 
   // 448 length of dates array
-
   const scrollSections = gsap.utils.toArray(".scroll-section");
   scrollSections.forEach((section) => {
     gsap.to(animationProps, {
@@ -39,12 +38,26 @@ function buildAnimation() {
         start: "top center",
         end: "bottom center",
         scrub: true,
+        onEnter: (d) => {
+          props.dataDisplay = d.trigger.dataset.zoom;
+        },
+        onEnterBack: (d) => {
+          props.dataDisplay = d.trigger.dataset.zoom;
+        },
+        onLeave: () => {
+          props.dataDisplay = "none";
+          animationProps.currentDay = 4;
+        },
+        onLeaveBack: () => {
+          props.dataDisplay = "none";
+          animationProps.currentDay = 4;
+        },
       },
     });
   });
 
   gsap.to(graphicsContainer, {
-    pixi: zoom.europe,
+    pixi: zoomLevels.europe,
     ease: "power1.inOut",
     scrollTrigger: {
       trigger: "#europe-start",
@@ -56,10 +69,10 @@ function buildAnimation() {
   gsap.fromTo(
     graphicsContainer,
     {
-      pixi: zoom.europe,
+      pixi: zoomLevels.europe,
     },
     {
-      pixi: zoom.usa,
+      pixi: zoomLevels.usa,
       ease: "power1.inOut",
       immediateRender: false,
       scrollTrigger: {
@@ -73,14 +86,14 @@ function buildAnimation() {
   gsap.fromTo(
     graphicsContainer,
     {
-      pixi: zoom.usa,
+      pixi: zoomLevels.usa,
     },
     {
-      pixi: zoom.world,
+      pixi: zoomLevels.world,
       ease: "power1.inOut",
       immediateRender: false,
       scrollTrigger: {
-        trigger: "#final-start",
+        trigger: "#end-start",
         start: "top center",
         scrub: true,
       },
