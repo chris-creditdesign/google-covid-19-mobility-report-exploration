@@ -1,8 +1,14 @@
 <script>
   import { afterUpdate } from "svelte";
   import { loadMap } from "./actions/loadMap.js";
+  import { currentDay } from "../../stores/animation-state.js";
 
   let updateBackgroundAnimation = false;
+
+  function handelUpdateScrollArea(event) {
+    let currentDayInt = parseInt(event.detail.currentDay, 10);
+    currentDay.set(currentDayInt);
+  }
 
   afterUpdate(() => {
     updateBackgroundAnimation = true;
@@ -33,5 +39,9 @@
 </style>
 
 {#if updateBackgroundAnimation}
-  <div class="map-container" use:loadMap></div>
+  <div
+    class="map-container"
+    use:loadMap
+    on:updateScrollArea="{handelUpdateScrollArea}"
+  ></div>
 {/if}

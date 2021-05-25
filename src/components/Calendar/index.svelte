@@ -1,5 +1,6 @@
 <script>
   import { Stack, Box } from "creditdesign-svelte-components";
+  import { currentDay } from "../../stores/animation-state.js";
 </script>
 
 <style>
@@ -68,5 +69,7 @@
         </div>
       </div>
     </Stack>
+
+    <p>{$currentDay}</p>
   </Box>
 </div>

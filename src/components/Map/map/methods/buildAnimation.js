@@ -8,7 +8,7 @@ PixiPlugin.registerPIXI(PIXI);
 
 function buildAnimation() {
   let { app, graphicsContainer, props } = this;
-  let { zoomLevels } = props;
+  let { zoomLevels, node } = props;
 
   let animationProps = {
     currentDay: 4,
@@ -38,6 +38,15 @@ function buildAnimation() {
         start: "top center",
         end: "bottom center",
         scrub: true,
+        onUpdate: () => {
+          node.dispatchEvent(
+            new CustomEvent("updateScrollArea", {
+              detail: {
+                currentDay: animationProps.currentDay,
+              },
+            })
+          );
+        },
         onEnter: (d) => {
           props.dataDisplay = d.trigger.dataset.zoom;
         },

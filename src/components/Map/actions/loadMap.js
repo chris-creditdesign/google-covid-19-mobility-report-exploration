@@ -19,7 +19,7 @@ export const loadMap = async (node) => {
   const data = await buildData();
 
   // 5. Build a pixi application
-  let myMap = Map({ ...props, data, landAreas });
+  let myMap = Map({ ...props, data, landAreas, node });
 
   myMap
     .buildApp()
