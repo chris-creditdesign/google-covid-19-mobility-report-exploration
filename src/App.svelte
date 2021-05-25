@@ -3,7 +3,7 @@
   import { Center, Stack } from "creditdesign-svelte-components";
   import { allowAnimation } from "./stores/prefers-reduced-motion.js";
   import { widthCheckElement } from "./stores/check-wide-enough.js";
-  import BackgroundContainer from "./components/BackgroundContainer/index.svelte";
+  import BackgroundPlaceholder from "./components/BackgroundPlaceholder/index.svelte";
 
   onMount(() => {
     // allowAnimation should be true if the reader has set 'no-preference'
@@ -15,15 +15,6 @@
 </script>
 
 <style>
-  :global(.background-container) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -100;
-    width: 100vw;
-    height: 100vh;
-  }
-
   h1 {
     margin-top: var(--s6);
   }
@@ -38,7 +29,7 @@
   }
 </style>
 
-<!-- <Head articleData="{articleData}" /> -->
+<BackgroundPlaceholder />
 
 <Stack stackSpace="var(--s6)">
   <Center>
@@ -51,8 +42,6 @@
   </Center>
 
   <main bind:this="{$widthCheckElement}" id="main-content">
-    <BackgroundContainer />
-
     <Center>
       <Stack stackSpace="var(--s5)">
         <div class="scroll-section" data-zoom="world">

@@ -1,28 +1,47 @@
 <script>
-  import { onMount } from "svelte";
-  import BackgroundStatic from "../BackgroundStatic/index.svelte";
-  import { allowAnimation } from "../../stores/prefers-reduced-motion.js";
+  import Map from "../Map/index.svelte";
+  import Calendar from "../Calendar/index.svelte";
 
-  let innerWidth = 730;
-  let shouldAnimate = false;
-
-  let backgroundComponents = new Map();
-  backgroundComponents.set(false, BackgroundStatic);
-
-  // This should go into the content.json
-  let altText = "Alt text for diabetes animation.";
-
-  $: selectedComponent = backgroundComponents.get(shouldAnimate);
-
-  onMount(async () => {
-    innerWidth = window.innerWidth;
-    const module = await import("../BackgroundAnimated/index.svelte");
-    if ($allowAnimation && innerWidth > 730) {
-      //   BackgroundAnimated = module.default;
-      shouldAnimate = true;
-      backgroundComponents.set(true, module.default);
-    }
-  });
+  export let altText;
 </script>
 
-<svelte:component this="{selectedComponent}" altText="{altText}" />
+<style>
+  .background-container {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    pointer-events: none;
+    z-index: -100;
+  }
+
+  :global(.map-container) {
+    grid-row: 1 / 4;
+    grid-column: 1 / 2;
+    z-index: -999;
+  }
+
+  :global(.calendar-container) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+
+  .legend-container {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+  }
+</style>
+
+<div class="background-container" role="img" aria-label="{altText}">
+  <Map />
+
+  <Calendar />
+
+  <div class="legend-container">
+    <h2>This is the Legend</h2>
+  </div>
+</div>

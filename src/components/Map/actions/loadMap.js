@@ -1,9 +1,9 @@
 import buildProps from "../functions/buildProps.js";
-import buildLandAreas from "../functions/buildLandAreas";
+import buildLandAreas from "../functions/buildLandAreas.js";
 import buildData from "../functions/buildData.js";
 import Map from "../map/Map.js";
 
-export const backgroundAnimation = async (node, scrollPosition) => {
+export const loadMap = async (node) => {
   let width = window.innerWidth;
   let height = window.innerHeight;
   let resolution = window.devicePixelRatio;
@@ -35,11 +35,9 @@ export const backgroundAnimation = async (node, scrollPosition) => {
   node.appendChild(myMap.app.view);
 
   return {
-    update(newScrollPosition) {
-      return false;
-    },
     destroy() {
-      return false;
+      myMap.app.destroy();
+      node.removeChild(myMap.app.view);
     },
   };
 };

@@ -8,7 +8,6 @@
     "clean": "rm public/build/* && rm ssr/*",
     "build": "rollup -c",
     "build:ssr-js": "rollup -c rollup.config.ssr.js",
-    "build:tracking-js": "rollup -c rollup.config.tracking.js",
     "build:ssr-html": "node ./scripts/render-static-html.js",
     "ssr": "npm run clean && npm run build && npm run build:ssr-js && npm run build:ssr-html",
     "prettier": "prettier --write --plugin-search-dir=. src/**/* scripts/**/*",
