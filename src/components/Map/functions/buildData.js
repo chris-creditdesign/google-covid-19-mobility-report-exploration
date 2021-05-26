@@ -1,9 +1,13 @@
 async function buildData() {
-  const response = await fetch("./data/data-world-sub-region-1-parks.json");
+  const responseWorld = await fetch("./data/world-parks.json");
+  const responseEurope = await fetch("./data/europe-parks.json");
+  const responseUsa = await fetch("./data/usa-parks.json");
 
-  const json = await response.json();
+  const world = await responseWorld.json();
+  const europe = await responseEurope.json();
+  const usa = await responseUsa.json();
 
-  return json;
+  return { world, europe, usa };
 }
 
 export default buildData;
