@@ -53,18 +53,50 @@ function buildAnimation() {
           props.currentDay = currentDay;
         },
         onEnter: (d) => {
+          node.dispatchEvent(
+            new CustomEvent("updateDataDisplay", {
+              detail: {
+                dataDisplay: d.trigger.dataset.zoom,
+              },
+            })
+          );
+
           props.dataDisplay = d.trigger.dataset.zoom;
         },
         onEnterBack: (d) => {
           props.dataDisplay = d.trigger.dataset.zoom;
+
+          node.dispatchEvent(
+            new CustomEvent("updateDataDisplay", {
+              detail: {
+                dataDisplay: d.trigger.dataset.zoom,
+              },
+            })
+          );
         },
         onLeave: () => {
+          node.dispatchEvent(
+            new CustomEvent("updateDataDisplay", {
+              detail: {
+                dataDisplay: "none",
+              },
+            })
+          );
+
           props.dataDisplay = "none";
-          animationProps.currentDay = 4;
+          animationProps.currentDay = 0;
         },
         onLeaveBack: () => {
+          node.dispatchEvent(
+            new CustomEvent("updateDataDisplay", {
+              detail: {
+                dataDisplay: "none",
+              },
+            })
+          );
+
           props.dataDisplay = "none";
-          animationProps.currentDay = 4;
+          animationProps.currentDay = 0;
         },
       },
     });

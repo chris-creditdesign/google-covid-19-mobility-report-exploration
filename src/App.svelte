@@ -25,7 +25,7 @@
 
   .scroll-section {
     border: 1px solid red;
-    min-height: 150vh;
+    min-height: 200vh;
   }
 </style>
 
@@ -43,7 +43,7 @@
 
   <main bind:this="{$widthCheckElement}" id="main-content">
     <Center>
-      <Stack stackSpace="var(--s5)">
+      <Stack stackSpace="50vh">
         <div class="scroll-section" data-zoom="world">
           <Stack>
             <p>
@@ -73,7 +73,7 @@
           </Stack>
         </div>
 
-        <h2 id="europe-start">Europe start</h2>
+        <h2 id="europe-start">Europe</h2>
 
         <div class="scroll-section" data-zoom="europe">
           <Stack>
@@ -117,7 +117,7 @@
           </Stack>
         </div>
 
-        <h2 id="usa-start">United States of the united states of america</h2>
+        <h2 id="usa-start">United States of the America</h2>
 
         <div class="scroll-section" data-zoom="usa">
           <Stack>
