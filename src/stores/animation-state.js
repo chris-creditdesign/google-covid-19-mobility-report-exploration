@@ -15,18 +15,15 @@ export const activeDateObject = derived(currentDay, ($currentDay) => {
   let date = new Date($currentDay);
   let day = date.getDate();
   let ordinalDay = `${day}<sup>${suffix(day)}</sup>`;
+  let month = date.getMonth();
   let longMonth = date.toLocaleString("default", { month: "long" });
-
-  let shortMonth = date
-    .toLocaleString("default", { month: "short" })
-    .toLocaleLowerCase();
   let year = date.getFullYear();
 
   return {
     day,
     ordinalDay,
+    month,
     longMonth,
     year,
-    activeMonth: `${shortMonth}-${year}`,
   };
 });
