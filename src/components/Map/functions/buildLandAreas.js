@@ -36,11 +36,11 @@ let usa = {
         type: "Polygon",
         coordinates: [
           [
-            [-57, 57], // Start top right
-            [-57, 27], // bottom right
+            [-65, 50], // Start top right
+            [-65, 27], // bottom right
             [-126, 27], // bottom left
-            [-126, 57], // top right
-            [-57, 57], // return to start
+            [-126, 50], // top left
+            [-65, 50], // return to start
           ],
         ],
       },
