@@ -10,6 +10,7 @@
     "build:ssr-js": "rollup -c rollup.config.ssr.js",
     "build:ssr-html": "node ./scripts/render-static-html.js",
     "ssr": "npm run clean && npm run build && npm run build:ssr-js && npm run build:ssr-html",
+    "netlify": "npm run build && npm run build:ssr-js && npm run build:ssr-html",
     "prettier": "prettier --write --plugin-search-dir=. src/**/* scripts/**/*",
     "eslint": "eslint 'scripts/**/*.js' 'src/**/*.{js,svelte}'",
     "start": "sirv public"
