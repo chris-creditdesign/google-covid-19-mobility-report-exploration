@@ -1,8 +1,4 @@
-import { scaleLinear } from "d3-scale";
-
-const spikeScale = scaleLinear().domain([-100, 100]).range([30, -30]);
-
-const colorScale = (d) => (d > 0 ? 0xff0000 : 0x0000ff);
+import { colorScale, spikeScale } from "../../../../utils/scales.js";
 
 function buildDataGraphics() {
   let { dataGraphics, projection, props } = this;

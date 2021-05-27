@@ -1,6 +1,7 @@
 <script>
   import Map from "../Map/index.svelte";
   import Calendar from "../Calendar/index.svelte";
+  import Legend from "../Legend/index.svelte";
 
   export let altText;
 </script>
@@ -30,7 +31,7 @@
     grid-column: 1 / 2;
   }
 
-  .legend-container {
+  :global(.legend-container) {
     grid-row: 3 / 4;
     grid-column: 1 / 2;
   }
@@ -41,7 +42,5 @@
 
   <Calendar />
 
-  <div class="legend-container">
-    <h2>This is the Legend</h2>
-  </div>
+  <Legend />
 </div>
