@@ -6,8 +6,7 @@
   let updateBackgroundAnimation = false;
 
   function handelUpdateScrollArea(event) {
-    let currentDayInt = parseInt(event.detail.currentDay, 10);
-    currentDay.set(currentDayInt);
+    currentDay.set(event.detail.currentDay);
   }
 
   afterUpdate(() => {

@@ -8,7 +8,8 @@ PixiPlugin.registerPIXI(PIXI);
 
 function buildAnimation() {
   let { app, graphicsContainer, props } = this;
-  let { zoomLevels, node } = props;
+  let { zoomLevels, node, data } = props;
+  let { dates } = data;
 
   let animationProps = {
     currentDay: 4,
@@ -31,7 +32,7 @@ function buildAnimation() {
   const scrollSections = gsap.utils.toArray(".scroll-section");
   scrollSections.forEach((section) => {
     gsap.to(animationProps, {
-      currentDay: 444,
+      currentDay: 461,
       ease: "none",
       scrollTrigger: {
         trigger: section,
@@ -39,13 +40,17 @@ function buildAnimation() {
         end: "bottom center",
         scrub: true,
         onUpdate: () => {
+          let currentDay = parseInt(animationProps.currentDay, 10);
+
           node.dispatchEvent(
             new CustomEvent("updateScrollArea", {
               detail: {
-                currentDay: animationProps.currentDay,
+                currentDay: dates[currentDay],
               },
             })
           );
+
+          props.currentDay = currentDay;
         },
         onEnter: (d) => {
           props.dataDisplay = d.trigger.dataset.zoom;
@@ -113,9 +118,6 @@ function buildAnimation() {
 
   // Listen for animate update and redraw the spikes
   app.ticker.add(() => {
-    const currentDay = parseInt(animationProps.currentDay, 10);
-
-    props.currentDay = currentDay;
     this.drawDataGraphics();
   });
 

@@ -15,7 +15,7 @@ function buildDataGraphics() {
 
     const spikeRadius = 2 / scale;
 
-    data[dataDisplay].data.forEach((d) => {
+    data[dataDisplay].forEach((d) => {
       let [x, y] = projection([d.lng, d.lat]);
       let color = colorScale(d.parks[currentDay]);
       let spikeHeight = spikeScale(d.parks[currentDay]);
