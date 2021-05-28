@@ -1,7 +1,6 @@
 <script>
   import * as PIXI from "pixi.js";
   import { Box, Stack, Cluster } from "creditdesign-svelte-components";
-  import { dataDisplay } from "../../stores/animation-state.js";
   import { colorScale, spikeScale } from "../../utils/scales.js";
 
   let margin = { top: 10, bottom: 20, left: 10, right: 10 };
@@ -15,16 +14,10 @@
 <style>
   .legend-container {
     font-size: var(--font-size-small-1);
-    opacity: 0;
-    transition: opacity 300ms;
-  }
-
-  .legend-container.active {
-    opacity: 1;
   }
 </style>
 
-<div class="legend-container" class:active="{$dataDisplay !== 'none'}">
+<div class="legend-container">
   <Box>
     <Stack stackSpace="var(--s-3)">
       <p class="font-weight:bold">Change from baseline of park usage (%)</p>

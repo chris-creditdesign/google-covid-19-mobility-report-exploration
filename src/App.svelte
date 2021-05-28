@@ -15,37 +15,49 @@
 </script>
 
 <style>
+  :global(:root) {
+    --global-stack-space: 50vh;
+  }
+
   h1 {
     margin-top: var(--s6);
+  }
+
+  heading {
+    text-align: center;
   }
 
   footer {
     margin-bottom: var(--s3);
   }
 
+  main p {
+    padding: var(--s1);
+    background-color: var(--white-0);
+  }
+
   .scroll-section {
-    border: 1px solid red;
     min-height: 200vh;
   }
 </style>
 
 <BackgroundPlaceholder />
 
-<Stack stackSpace="var(--s6)">
+<Stack stackSpace="var(--global-stack-space)">
   <Center>
     <heading>
       <Stack>
-        <h1>Hello is this working</h1>
-        <p>Let's make this into a standfirst</p>
+        <h1>Google COVID-19 mobility reports</h1>
+        <p>An exploration</p>
       </Stack>
     </heading>
   </Center>
 
   <main bind:this="{$widthCheckElement}" id="main-content">
     <Center>
-      <Stack stackSpace="50vh">
+      <Stack stackSpace="var(--global-stack-space)">
         <div class="scroll-section" data-zoom="world">
-          <Stack>
+          <Stack stackSpace="var(--global-stack-space)">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
               harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
@@ -76,7 +88,7 @@
         <h2 id="europe-start">Europe</h2>
 
         <div class="scroll-section" data-zoom="europe">
-          <Stack>
+          <Stack stackSpace="var(--global-stack-space)">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
               harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
@@ -120,7 +132,7 @@
         <h2 id="usa-start">United States of the America</h2>
 
         <div class="scroll-section" data-zoom="usa">
-          <Stack>
+          <Stack stackSpace="var(--global-stack-space)">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
               harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
@@ -145,7 +157,7 @@
         <h2 id="end-start">Final section start</h2>
 
         <div class="scroll-section" data-zoom="world">
-          <Stack>
+          <Stack stackSpace="var(--global-stack-space)">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
               harum. Odio temporibus expedita, obcaecati quo fugiat voluptatem
@@ -171,6 +183,13 @@
   </main>
 
   <Center>
-    <footer>Let's make this a footer.</footer>
+    <footer>
+      <p>
+        The code for this page can be viewed on <a
+          href="https://github.com/chris-creditdesign/google-covid-19-mobility-report-exploration"
+          >GitHub</a
+        >.
+      </p>
+    </footer>
   </Center>
 </Stack>
