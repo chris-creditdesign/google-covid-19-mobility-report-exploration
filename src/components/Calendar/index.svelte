@@ -81,7 +81,11 @@
   }
 </style>
 
-<div class="calendar-container" class:active="{$dataDisplay !== 'none'}">
+<div
+  class="calendar-container"
+  class:active="{$dataDisplay !== 'none'}"
+  aria-hidden="true"
+>
   <Box>
     <Stack>
       <p class="date">

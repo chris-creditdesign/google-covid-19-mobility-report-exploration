@@ -47,5 +47,6 @@
     use:loadMap
     on:updateScrollArea="{handelUpdateScrollArea}"
     on:updateDataDisplay="{handelUpdateDataDisplay}"
+    aria-hidden="true"
   ></div>
 {/if}

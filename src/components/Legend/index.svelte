@@ -17,7 +17,7 @@
   }
 </style>
 
-<div class="legend-container">
+<div class="legend-container" aria-hidden="true">
   <Box>
     <Stack stackSpace="var(--s-3)">
       <p class="font-weight:bold">Change from baseline of park usage (%)</p>

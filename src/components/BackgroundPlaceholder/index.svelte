@@ -8,7 +8,8 @@
   backgroundComponents.set(false, null);
 
   // This should go into the content.json
-  let altText = "Alt text for diabetes animation.";
+  let altText =
+    "World map showing change from baseline for park useage at many locations around the world.";
 
   $: selectedComponent = backgroundComponents.get(shouldAnimate);
 
