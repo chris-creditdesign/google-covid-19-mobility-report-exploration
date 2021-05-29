@@ -4,38 +4,32 @@ A project seeking to explore and visualise the [Google Covid-19 Mobility Report 
 
 ## Data expolation
 
-    Observable notebook
+Expoloritory analysis of the dataset can be viewed in this Observable notebook and [Juyter notebook](google-covid-19-mobility-data-process-v1.ipynb).
 
 ## To download and process the data
 
-To download the raw data from Google. Be warned, this is a 530mb file:
+To download the raw data from Google (be warned, this is a 530mb file):
 
     make source-data/Global_Mobility_Report.csv
 
-To filter the data to just contain rows that pertain to `sub_region_1` areas. ie. Smaller than countries but less granular that `sub_region_2` or `metro_area` points.
+To filter the data to just contain rows that pertain to `sub_region_1` areas for the world and `sub_region_2` for the USA and Europe:
 
-    make source-data/world-sub-region-1.csv
+    make output-data/world.csv
+    make output-data/usa.csv
+    output-data/europe.csv
 
 To process the data, in order to:
 
 - Extract just the points for "retail_and_recreation_percent_change_from_baseline"
+- Calculate a seven day rolling average
 - Add lat long coordinates for each `place_id` using the Google Maps API
-- Reconfigure as save the data as json file for visualisation. With each location saved as an object within an array.
+- Reconfigure as save the data as json file for visualisation.
 
-Each data point will look like:
+Please run these Jupyter notebooks:
 
-```
-{
-  place_id: "ChIJGczaTT5mXj4RBNmakTvGr4s"
-  country_region: "United Arab Emirates"
-  sub_region_1: "Abu Dhabi"
-  lng: 53.7369154
-  lat: 23.4677235
-  parks: [0, 10, 100, ...]
-}
-```
-
-    python3 scripts/process-data.py
+- [google-covid-19-mobility-data-process-world.ipynb]()
+- [google-covid-19-mobility-data-process-usa.ipynb]()
+- [google-covid-19-mobility-data-process-europe.ipynb]()
 
 ## To build the visualisation
 
@@ -51,7 +45,7 @@ Navigate to [localhost:5000](http://localhost:5000).
 
 ## Build a SSR version of the page
 
-To render the compiled client side js as `public/build/bundle.js`
+To render the compiled client side javascript as `public/build/bundle.js`
 
     npm run build
 
@@ -59,7 +53,7 @@ To render a bundled version of the svelte app, which can be run in a node enviro
 
     npm run build:ssr-js
 
-To call `render-static-html.js` to create a static rendering of the html, containing the javascript and the css, as `public/index.html`:
+To call `render-static-html.js` to create a static rendering of the html as `public/index.html`:
 
     npm run build:ssr-html
 
@@ -67,12 +61,16 @@ To run all these processes together:
 
     npm run ssr
 
-## Get data from Google Docs
+## Get text from Google Doc
 
-Uses [googledoc-to-json](https://github.com/bradoyler/googledoc-to-json) to download text from a google doc in a ArchieML format and convert this to json.
+The text for this visualisation is derrived from this [Google Doc](https://docs.google.com/document/d/1bUOAzU8YdduZDnKYiXtSQ4HldDAOmQvk7gZLpUngyU0/edit).
 
-Credentials are stored in `secrets/config.json`.
+To download the latest version of the text and save it as `src/content/data.json` for use by `src/App.svelte` run:
 
-Use [google-tokens](https://github.com/bradoyler/google-tokens) to create these details.
+    npm run build:ssr-text
+
+Uses [googledoc-to-json](https://github.com/bradoyler/googledoc-to-json) to download text from the google doc in the ArchieML format and convert this to json.
+
+Use [google-tokens](https://github.com/bradoyler/google-tokens) to create API credentials.
 
 Note: The `refresh_token` may be invalidated by google after a period of time. Run `google-tokens` again to get new value.
