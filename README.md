@@ -2,6 +2,10 @@
 
 A project seeking to explore and visualise the [Google Covid-19 Mobility Report data](https://www.google.com/covid19/mobility/).
 
+## Data expolation
+
+    Observable notebook
+
 ## To download and process the data
 
 To download the raw data from Google. Be warned, this is a 530mb file:
@@ -62,3 +66,13 @@ To call `render-static-html.js` to create a static rendering of the html, contai
 To run all these processes together:
 
     npm run ssr
+
+## Get data from Google Docs
+
+Uses [googledoc-to-json](https://github.com/bradoyler/googledoc-to-json) to download text from a google doc in a ArchieML format and convert this to json.
+
+Credentials are stored in `secrets/config.json`.
+
+Use [google-tokens](https://github.com/bradoyler/google-tokens) to create these details.
+
+Note: The `refresh_token` may be invalidated by google after a period of time. Run `google-tokens` again to get new value.
