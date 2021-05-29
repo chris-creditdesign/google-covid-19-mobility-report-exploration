@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { allowAnimation } from "../../stores/prefers-reduced-motion.js";
 
-  let innerWidth = 730;
   let shouldAnimate = false;
 
   let backgroundComponents = new Map();
@@ -14,11 +13,10 @@
   $: selectedComponent = backgroundComponents.get(shouldAnimate);
 
   onMount(async () => {
-    innerWidth = window.innerWidth;
     const BackgroundContainer = await import(
       "../BackgroundContainer/index.svelte"
     );
-    if ($allowAnimation && innerWidth > 730) {
+    if ($allowAnimation) {
       shouldAnimate = true;
       backgroundComponents.set(true, BackgroundContainer.default);
     }

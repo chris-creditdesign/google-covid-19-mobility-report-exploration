@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { Center, Stack } from "creditdesign-svelte-components";
   import { allowAnimation } from "./stores/prefers-reduced-motion.js";
-  import { widthCheckElement } from "./stores/check-wide-enough.js";
   import BackgroundPlaceholder from "./components/BackgroundPlaceholder/index.svelte";
   import data from "./content/data.json";
 
@@ -68,7 +67,7 @@
     </heading>
   </Center>
 
-  <main bind:this="{$widthCheckElement}" id="main-content">
+  <main id="main-content">
     <Center>
       <Stack stackSpace="var(--global-stack-space)">
         <div class="scroll-section" data-zoom="world">
