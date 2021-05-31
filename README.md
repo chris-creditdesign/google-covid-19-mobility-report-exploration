@@ -2,7 +2,7 @@
 
 A project seeking to explore and visualise the [Google Covid-19 Mobility Report data](https://www.google.com/covid19/mobility/).
 
-Published at: [https://romantic-saha-e522d8.netlify.app]()
+Published at: [https://romantic-saha-e522d8.netlify.app](https://romantic-saha-e522d8.netlify.app)
 
 ## Data expolation
 
@@ -28,8 +28,8 @@ To process the data, in order to:
 
 Please run these Jupyter notebooks:
 
-- [google-covid-19-mobility-data-process-world.ipynb]()
-- [google-covid-19-mobility-data-process-england.ipynb]()
+- [google-covid-19-mobility-data-process-world.ipynb](google-covid-19-mobility-data-process-world.ipynb)
+- [google-covid-19-mobility-data-process-england.ipynb](google-covid-19-mobility-data-process-england.ipynb)
 
 ## To build the visualisation
 
