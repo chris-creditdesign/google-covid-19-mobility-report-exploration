@@ -35,8 +35,9 @@
     opacity: 1;
   }
 
-  .year > span {
-    font-size: var(--font-size-small-1);
+  .year > span,
+  .months > span {
+    font-size: 75%;
   }
 
   .year > * {
@@ -128,6 +129,8 @@
           {/each}
         </div>
       </div>
+
+      <p>{$activeDateObject.lockdownStatus}</p>
     </Stack>
   </Box>
 </div>

@@ -103,48 +103,14 @@ function buildAnimation() {
   });
 
   gsap.to(graphicsContainer, {
-    pixi: zoomLevels.europe,
+    pixi: zoomLevels.england,
     ease: "power1.inOut",
     scrollTrigger: {
-      trigger: "#europe-start",
+      trigger: "#england-start",
       start: "top center",
       scrub: true,
     },
   });
-
-  gsap.fromTo(
-    graphicsContainer,
-    {
-      pixi: zoomLevels.europe,
-    },
-    {
-      pixi: zoomLevels.usa,
-      ease: "power1.inOut",
-      immediateRender: false,
-      scrollTrigger: {
-        trigger: "#usa-start",
-        start: "top center",
-        scrub: true,
-      },
-    }
-  );
-
-  gsap.fromTo(
-    graphicsContainer,
-    {
-      pixi: zoomLevels.usa,
-    },
-    {
-      pixi: zoomLevels.world,
-      ease: "power1.inOut",
-      immediateRender: false,
-      scrollTrigger: {
-        trigger: "#end-start",
-        start: "top center",
-        scrub: true,
-      },
-    }
-  );
 
   /* -------------------------- Update the animation -------------------------- */
 
