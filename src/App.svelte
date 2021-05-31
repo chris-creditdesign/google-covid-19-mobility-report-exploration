@@ -40,12 +40,7 @@
     text-align: center;
   }
 
-  footer {
-    margin-bottom: var(--s3);
-  }
-
-  main p,
-  footer p {
+  main p {
     padding: var(--s1);
     background-color: var(--white-0);
   }
@@ -90,14 +85,4 @@
       </Stack>
     </Center>
   </main>
-
-  <Center>
-    <footer>
-      <Stack>
-        {#each footer_text as text}
-          <p>{@html text.value}</p>
-        {/each}
-      </Stack>
-    </footer>
-  </Center>
 </Stack>
