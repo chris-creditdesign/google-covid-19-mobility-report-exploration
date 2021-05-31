@@ -15,14 +15,11 @@ output-data/world.csv: source-data/Global_Mobility_Report.csv
 	csvgrep -c 3 -r '^$$' -i \
 	> output-data/world.csv
 
-# Create a CSV with just rows for US
-output-data/usa.csv: source-data/Global_Mobility_Report.csv
-	csvgrep -c 1 -m US source-data/Global_Mobility_Report.csv \
-	> output-data/usa.csv
+# Create a CSV with just rows for Great Britain
+# I want rows where column one is equal to "GB"
+# and column 4 to not be be empty
+output-data/england.csv: source-data/Global_Mobility_Report.csv
+	csvgrep -c 1 -m "GB" source-data/Global_Mobility_Report.csv | \
+	csvgrep -c 4 -r '^$$' -i \
+	> output-data/england.csv
 
-# Create a CSV with just rows relating to countries in Europe
-# Europe ISO list taken from https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=141329
-output-data/europe.csv: source-data/Global_Mobility_Report.csv
-	cat source-data/Global_Mobility_Report.csv | \
-	csvgrep -c 1 -r 'AT$\|BE$\|BG$\|HR$\|CY$\|CZ$\|DK$\|EE$\|FI$\|FR$\|DE$\|GR$\|HU$\|IE$\|IT$\|LV$\|LT$\|LU$\|MT$\|NL$\|PL$\|PT$\|RO$\|SK$\|SI$\|ES$\|SE$\|GB' \
-	> output-data/europe.csv

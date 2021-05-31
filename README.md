@@ -2,9 +2,11 @@
 
 A project seeking to explore and visualise the [Google Covid-19 Mobility Report data](https://www.google.com/covid19/mobility/).
 
+Published at: [https://romantic-saha-e522d8.netlify.app]()
+
 ## Data expolation
 
-Expoloritory analysis of the dataset can be viewed in this Observable notebook and [Juyter notebook](google-covid-19-mobility-data-process-v1.ipynb).
+Expoloritory analysis of the dataset can be viewed in this [Observable notebook](https://observablehq.com/@chris-creditdesign/google-mobility-data-exploration) and [Juyter notebook](google-covid-19-mobility-data-process-v1.ipynb).
 
 ## To download and process the data
 
@@ -12,11 +14,10 @@ To download the raw data from Google (be warned, this is a 530mb file):
 
     make source-data/Global_Mobility_Report.csv
 
-To filter the data to just contain rows that pertain to `sub_region_1` areas for the world and `sub_region_2` for the USA and Europe:
+To filter the data to just contain rows that pertain to `sub_region_1` areas for the world and `sub_region_2` for Great Britain:
 
     make output-data/world.csv
-    make output-data/usa.csv
-    output-data/europe.csv
+    make output-data/england.csv
 
 To process the data, in order to:
 
@@ -28,8 +29,7 @@ To process the data, in order to:
 Please run these Jupyter notebooks:
 
 - [google-covid-19-mobility-data-process-world.ipynb]()
-- [google-covid-19-mobility-data-process-usa.ipynb]()
-- [google-covid-19-mobility-data-process-europe.ipynb]()
+- [google-covid-19-mobility-data-process-england.ipynb]()
 
 ## To build the visualisation
 

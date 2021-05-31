@@ -464,15 +464,13 @@ async function buildData() {
     "2021-05-21",
   ];
 
-  const responseWorld = await fetch("./data/world-parks.json");
-  const responseEurope = await fetch("./data/europe-parks.json");
-  const responseUsa = await fetch("./data/usa-parks.json");
+  const responseWorld = await fetch("./data/world.json");
+  const responseEngland = await fetch("./data/england.json");
 
   const world = await responseWorld.json();
-  const europe = await responseEurope.json();
-  const usa = await responseUsa.json();
+  const england = await responseEngland.json();
 
-  return { dates, world, europe, usa };
+  return { dates, world, england };
 }
 
 export default buildData;

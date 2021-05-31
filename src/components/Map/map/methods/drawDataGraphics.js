@@ -13,8 +13,8 @@ function buildDataGraphics() {
 
     data[dataDisplay].forEach((d) => {
       let [x, y] = projection([d.lng, d.lat]);
-      let color = colorScale(d.parks[currentDay]);
-      let spikeHeight = spikeScale(d.parks[currentDay]);
+      let color = colorScale(d.values[currentDay]);
+      let spikeHeight = spikeScale(d.values[currentDay]);
 
       dataGraphics.beginFill(color, 0.5);
       dataGraphics.moveTo(x - spikeRadius, y);

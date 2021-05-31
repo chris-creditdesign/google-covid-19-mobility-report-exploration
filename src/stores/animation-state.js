@@ -1,4 +1,5 @@
 import { writable, derived } from "svelte/store";
+import { getCurrentLockdownStatus } from "../utils/scales.js";
 
 export const dataDisplay = writable("none");
 
@@ -18,6 +19,7 @@ export const activeDateObject = derived(currentDay, ($currentDay) => {
   let month = date.getMonth();
   let longMonth = date.toLocaleString("default", { month: "long" });
   let year = date.getFullYear();
+  let lockdownStatus = getCurrentLockdownStatus(date.valueOf());
 
   return {
     day,
@@ -25,5 +27,6 @@ export const activeDateObject = derived(currentDay, ($currentDay) => {
     month,
     longMonth,
     year,
+    lockdownStatus,
   };
 });

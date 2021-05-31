@@ -40,12 +40,7 @@
     text-align: center;
   }
 
-  footer {
-    margin-bottom: var(--s3);
-  }
-
-  main p,
-  footer p {
+  main p {
     padding: var(--s1);
     background-color: var(--white-0);
   }
@@ -78,31 +73,11 @@
           </Stack>
         </div>
 
-        <h2 id="europe-start">{@html section_two_headline}</h2>
+        <h2 id="england-start">{@html section_two_headline}</h2>
 
-        <div class="scroll-section" data-zoom="europe">
+        <div class="scroll-section" data-zoom="england">
           <Stack stackSpace="var(--global-stack-space)">
             {#each section_two_text as text}
-              <p>{@html text.value}</p>
-            {/each}
-          </Stack>
-        </div>
-
-        <h2 id="usa-start">{@html section_three_headline}</h2>
-
-        <div class="scroll-section" data-zoom="usa">
-          <Stack stackSpace="var(--global-stack-space)">
-            {#each section_three_text as text}
-              <p>{@html text.value}</p>
-            {/each}
-          </Stack>
-        </div>
-
-        <h2 id="end-start">{@html section_four_headline}</h2>
-
-        <div class="scroll-section" data-zoom="world">
-          <Stack stackSpace="var(--global-stack-space)">
-            {#each section_four_text as text}
               <p>{@html text.value}</p>
             {/each}
           </Stack>
@@ -110,14 +85,4 @@
       </Stack>
     </Center>
   </main>
-
-  <Center>
-    <footer>
-      <Stack>
-        {#each footer_text as text}
-          <p>{@html text.value}</p>
-        {/each}
-      </Stack>
-    </footer>
-  </Center>
 </Stack>
